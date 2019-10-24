@@ -1,26 +1,43 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import GoogleAuth from "react-google-login";
+import config from "./config";
+import "./App.css";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  const [state, setState] = useState({
+    isAuthenticated: false,
+    user: null,
+    token: ""
+  });
+
+  const logout = () => {
+    setState({ isAuthenticated: false, user: null, token: "" });
+  };
+
+  const onError = e => {
+    alert("auth failed");
+  };
+
+  const googelResponse = e => {};
+
+  useEffect(() => {
+    // : TODO implement popup
+  }, []);
+  const content = () =>
+    state.isAuthenticated ? (
+      <div>{state.user.name}</div>
+    ) : (
+      <div>
+        <GoogleAuth
+          onFailure={googelResponse}
+          onSuccess={googelResponse}
+          buttonText="Login"
+          clientId={config.GOOGLE_CLIENT_ID}
+        />
+      </div>
+    );
+
+  return <div className="App">{content()}</div>;
 }
 
 export default App;
