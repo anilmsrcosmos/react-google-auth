@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import GoogleAuth from "react-google-login";
 import config from "./config";
+import decode from "jwt-decode";
 import "./App.css";
 
 function App() {
@@ -35,13 +36,16 @@ function App() {
       mode: "cors",
       cache: "default"
     };
+
     fetch("http://localhost:4000/api/v1/google", options).then(res => {
       const token = res.headers.get("x-auth-token");
       res.json().then(user => {
         if (token) {
           setState({ ...state, isAuthenticated: true, user, token });
           // call the dispatch to set the token to localstorage
+          const decoded = decode(token);
           console.log(token);
+          console.log("decoded data", decoded);
         }
       });
     });
