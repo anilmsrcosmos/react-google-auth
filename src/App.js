@@ -10,6 +10,12 @@ function App() {
     token: ""
   });
 
+  useEffect(() => {
+    // if the jwt token exists
+    // load the user here
+    // dispatch the redux here
+  }, []);
+
   const logout = () => {
     setState({ isAuthenticated: false, user: null, token: "" });
   };
@@ -34,18 +40,21 @@ function App() {
       res.json().then(user => {
         if (token) {
           setState({ ...state, isAuthenticated: true, user, token });
-          console.log(user);
+          // call the dispatch to set the token to localstorage
+          console.log(token);
         }
       });
     });
   };
 
-  useEffect(() => {
-    // : TODO implement popup
-  }, []);
   const content = () =>
     state.isAuthenticated ? (
-      <div>{state.user.name}</div>
+      <div>
+        <p>{state.user.name}</p>
+        <a href="#" onClick={logout}>
+          logout
+        </a>
+      </div>
     ) : (
       <div>
         <GoogleAuth
@@ -57,7 +66,11 @@ function App() {
       </div>
     );
 
-  return <div className="App">{content()}</div>;
+  return (
+    <div className="App" style={{ marginTop: "30px" }}>
+      {content()}
+    </div>
+  );
 }
 
 export default App;
