@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/react-google-auth/static/css/main.b100e6da.chunk.css",
+    "main.js": "/react-google-auth/static/js/main.dbb77d98.chunk.js",
+    "main.js.map": "/react-google-auth/static/js/main.dbb77d98.chunk.js.map",
+    "runtime-main.js": "/react-google-auth/static/js/runtime-main.cd9d9fb7.js",
+    "runtime-main.js.map": "/react-google-auth/static/js/runtime-main.cd9d9fb7.js.map",
+    "static/js/2.547385d5.chunk.js": "/react-google-auth/static/js/2.547385d5.chunk.js",
+    "static/js/2.547385d5.chunk.js.map": "/react-google-auth/static/js/2.547385d5.chunk.js.map",
+    "index.html": "/react-google-auth/index.html",
+    "precache-manifest.bae6dacd6a34f0667b9d67d7aa1fcc5b.js": "/react-google-auth/precache-manifest.bae6dacd6a34f0667b9d67d7aa1fcc5b.js",
+    "service-worker.js": "/react-google-auth/service-worker.js",
+    "static/css/main.b100e6da.chunk.css.map": "/react-google-auth/static/css/main.b100e6da.chunk.css.map"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.cd9d9fb7.js",
+    "static/js/2.547385d5.chunk.js",
+    "static/css/main.b100e6da.chunk.css",
+    "static/js/main.dbb77d98.chunk.js"
+  ]
+}
