@@ -1,4 +1,4 @@
 export default {
   GOOGLE_CLIENT_ID:
-    "819361014392-b819jrrjunntikgork7tj6hnh9fduj5l.apps.googleusercontent.com"
+    "247056765255-rqdf8e4up49qs0uadknm34acdma5oo27.apps.googleusercontent.com"
 };

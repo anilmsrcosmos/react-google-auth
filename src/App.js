@@ -18,7 +18,27 @@ function App() {
     alert("auth failed");
   };
 
-  const googelResponse = e => {};
+  const googleResponse = response => {
+    const tokenBlob = new Blob(
+      [JSON.stringify({ access_token: response.accessToken }, null, 2)],
+      { type: "application/json" }
+    );
+    const options = {
+      method: "POST",
+      body: tokenBlob,
+      mode: "cors",
+      cache: "default"
+    };
+    fetch("http://localhost:4000/api/v1/google", options).then(res => {
+      const token = res.headers.get("x-auth-token");
+      res.json().then(user => {
+        if (token) {
+          setState({ ...state, isAuthenticated: true, user, token });
+          console.log(user);
+        }
+      });
+    });
+  };
 
   useEffect(() => {
     // : TODO implement popup
@@ -29,8 +49,8 @@ function App() {
     ) : (
       <div>
         <GoogleAuth
-          onFailure={googelResponse}
-          onSuccess={googelResponse}
+          onFailure={googleResponse}
+          onSuccess={googleResponse}
           buttonText="Login"
           clientId={config.GOOGLE_CLIENT_ID}
         />
